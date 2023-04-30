@@ -10,14 +10,12 @@
 
   <style>
     .box {display: flex;}
-    model-viewer {width: 600px; height: 400px; margin: 0, auto;}
+    model-viewer {background-color: unset;}
   </style>
 </head>
 
 <body>
-  <div class="box">
-    <div><p>TEXT</p></div>
-    <!--<div><model-viewer src="assets/images/sm.glb"></model-viewer>-->
+    <div class="demo" style="background: linear-gradient(#ffffff, #ada996); overflow-x: hidden;">
     <model-viewer src="./assets/test.glb"
               alt="A 3D model of an astronaut"
               ar
@@ -28,7 +26,6 @@
               ar
               auto-rotate
               camera-controls></model-viewer>
-    </div>
   </div>
 </body>
 </html>
