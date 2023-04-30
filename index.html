@@ -29,21 +29,6 @@
 
 <body>
     <div class="box">
-        <!-- <model-viewer id="color"
-            src="./assets/test.glb"
-            alt="A 3D model of an astronaut"
-            ar
-            disable-tap
-            disable-zoom
-            camera-controls
-            shadow-intensity="1">
-            <div class="controls" id="color-controls">
-                <button data-color="#ff0000">Red</button>
-                <button data-color="#00ff00">Green</button>
-                <button data-color="#0000ff">Blue</button>
-            </div>
-        </model-viewer> -->
-
         <model-viewer id="pickMaterial"
             src="./assets/test.glb"
             alt="A 3D model of an astronaut"
@@ -52,6 +37,9 @@
             disable-zoom
             camera-controls
             shadow-intensity="1">
+            <effect-composer render-mode="quality">
+                <glitch-effect blend-mode="skip"></glitch-effect>
+            </effect-composer>
         </model-viewer>
 
         <!-- <model-viewer 
@@ -70,25 +58,22 @@
         </model-viewer> -->
     </div>
 
-    <!-- <script>
-        const modelViewerColor = document.querySelector("model-viewer#color");
-        
-        document.querySelector('#color-controls').addEventListener('click', (event) => {
-          const colorString = event.target.dataset.color;
-          const [material] = modelViewerColor.model.materials;
-          material.pbrMetallicRoughness.setBaseColorFactor(colorString);
-        });
-    </script> -->
-
     <script type="module">
         const modelViewer = document.querySelector("model-viewer#pickMaterial");
+        const effects = document.querySelector("effect-composer").children;
         
         modelViewer.addEventListener("load", () => {
           const changeColor = (event) => {
             const material = modelViewer.materialFromPoint(event.clientX, event.clientY);
+            
             if (material != null) {
-              material.pbrMetallicRoughness.
-                setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+                const random = Math.floor(Math.random() * 3);
+                if (random == 0) {
+                    effects[0].blendMode = 'default';
+                } else {
+                    effects[0].blendMode = 'skip';
+                    material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+                }
             }
           };
         
