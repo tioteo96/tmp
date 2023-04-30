@@ -43,7 +43,18 @@
                 <button data-color="#0000ff">Blue</button>
             </div>
         </model-viewer> -->
-        <model-viewer 
+
+        <model-viewer id="pickMaterial"
+            src="./assets/test.glb"
+            alt="A 3D model of an astronaut"
+            ar
+            disable-tap
+            disable-zoom
+            camera-controls
+            shadow-intensity="1">
+        </model-viewer>
+
+        <!-- <model-viewer 
             src="./assets/donut.glb"
             alt="A 3D model of an astronaut"
             ar
@@ -54,18 +65,34 @@
                 alt="A 3D model of an astronaut"
                 ar
                 camera-controls
-                shadow-intensity="1"
-                style="width: 100px; height: 150px;">
+                shadow-intensity="1">
             </model-viewer>
-        </model-viewer>
+        </model-viewer> -->
     </div>
-    <script>
+
+    <!-- <script>
         const modelViewerColor = document.querySelector("model-viewer#color");
         
         document.querySelector('#color-controls').addEventListener('click', (event) => {
           const colorString = event.target.dataset.color;
           const [material] = modelViewerColor.model.materials;
           material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+        });
+    </script> -->
+
+    <script type="module">
+        const modelViewer = document.querySelector("model-viewer#pickMaterial");
+        
+        modelViewer.addEventListener("load", () => {
+          const changeColor = (event) => {
+            const material = modelViewer.materialFromPoint(event.clientX, event.clientY);
+            if (material != null) {
+              material.pbrMetallicRoughness.
+                setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+            }
+          };
+        
+          modelViewer.addEventListener("click", changeColor);
         });
     </script>
 </body>
