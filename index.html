@@ -16,8 +16,8 @@
     }
     model-viewer {
         background-color: unset;
-        width: 400px;
-        height: 600px;
+        width: 100%;
+        height: 100%;
     }
     .box {
         background: linear-gradient(#ffffff, #ada996);
@@ -29,7 +29,7 @@
 
 <body>
     <div class="box">
-        <model-viewer id="pickMaterial"
+        <model-viewer id="effectsViewer"
             src="./assets/test.glb"
             alt="A 3D model of an astronaut"
             ar
@@ -38,8 +38,30 @@
             camera-controls
             shadow-intensity="1">
             <effect-composer render-mode="quality">
-                <glitch-effect blend-mode="default"></glitch-effect>
-            </effect-composer>
+                <outline-effect color="blue" blend-mode="skip"></outline-effect>
+                <ssao-effect blend-mode="skip"></ssao-effect>
+                <glitch-effect blend-mode="skip"></glitch-effect>
+                <smaa-effect blend-mode="skip"></smaa-effect>
+                <bloom-effect blend-mode="skip"></bloom-effect>
+                <pixelate-effect granularity="5" blend-mode="skip"></pixelate-effect>
+                <color-grade-effect blend-mode="default"></color-grade-effect>
+              </effect-composer>
+              <div class="controls">
+                <label for="outline">Outline Effect</label>
+                <input type="checkbox" id="outline">
+                <label for="ssao">SSAO Effect</label>
+                <input type="checkbox" id="ssao">
+                <label for="glitch">Glitch Effect</label>
+                <input type="checkbox" id="glitch">
+                <label for="smaa">SMAA Effect</label>
+                <input type="checkbox" id="smaa">
+                <label for="bloom">Bloom Effect</label>
+                <input type="checkbox" id="bloom">
+                <label for="pixelate">Pixelate Effect</label>
+                <input type="checkbox" id="pixelate">
+                <label for="colorgrade">Color Grade Effect</label>
+                <input type="checkbox" id="colorgrade" checked>
+              </div>
         </model-viewer>
 
         <!-- <model-viewer 
@@ -58,7 +80,7 @@
         </model-viewer> -->
     </div>
 
-    <script type="module">
+    <!-- <script type="module">
         const modelViewer = document.querySelector("model-viewer#pickMaterial");
         const effects = document.querySelector("effect-composer").children;
         
@@ -81,6 +103,15 @@
         
           modelViewer.addEventListener("click", changeColor);
         });
-    </script>
+    </script> -->
+    <script type="module">
+        const effectsViewer = document.querySelector("model-viewer#effectsViewer");
+        const effects = effectsViewer.querySelector("effect-composer").children;
+        const inputs = effectsViewer.querySelectorAll("input");
+      
+        for (let i = 0; i < effects.length; i++) {
+          inputs[i].addEventListener('change', (e) => effects[i].blendMode = e.target.checked ? 'default' : 'skip');
+        }
+      </script>
 </body>
 </html>
