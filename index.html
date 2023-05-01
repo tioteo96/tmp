@@ -45,9 +45,17 @@
         modelViewer.addEventListener("load", () => {
           const changeColor = (event) => {
             const material = modelViewer.materialFromPoint(event.clientX, event.clientY);
+            const random = Math.floor(Math.random() * 3);
             if (material != null) {
-              material.pbrMetallicRoughness.
-                setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+              if (random == 0) {
+                material.setAlphaMode('OPAQUE');
+              } else if (random == 1) {
+                material.setAlphaMode('MASK');
+              } else {
+                material.setAlphaMode('BLEND');
+              }
+            //   material.pbrMetallicRoughness.
+            //     setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
               console.log(material.getAlphaMode());
               console.log(material.getDoubleSided());
             }
