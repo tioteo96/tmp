@@ -43,6 +43,7 @@
                 disable-tap
                 camera-controls
                 shadow-intensity="0"
+                scale="0.01 0.01 0.01"
                 style="visibility: hidden;">
             </model-viewer>
         </model-viewer>
@@ -51,7 +52,6 @@
     <script type="module">
         const myhomeViewer = document.querySelector("model-viewer#myhome");
         const cup = document.querySelector("model-viewer#cup");
-        cup.scale = `${0.2} ${0.2} ${0.2}`;
         
         myhomeViewer.addEventListener("load", () => {
           const changeColor = (event) => {
@@ -61,6 +61,7 @@
               material.pbrMetallicRoughness.
                 setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
               cup.style.visibility = "visible";
+              console.log(material.index);
             }
           };
         
