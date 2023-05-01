@@ -30,16 +30,6 @@
 <body>
     <div class="box">
         <model-viewer id="pickMaterial"
-            src="./assets/myhome.glb"
-            alt="A 3D model of an astronaut"
-            ar
-            disable-tap
-            disable-zoom
-            camera-controls
-            shadow-intensity="1">
-        </model-viewer>
-
-        <model-viewer id="testMaterial"
             src="./assets/test.glb"
             alt="A 3D model of an astronaut"
             ar
@@ -52,7 +42,6 @@
 
     <script type="module">
         const modelViewer = document.querySelector("model-viewer#pickMaterial");
-        const testViewer = document.querySelector("model-viewer#testMaterial");
         const effects = document.querySelector("effect-composer").children;
         
         modelViewer.addEventListener("load", () => {
@@ -66,19 +55,6 @@
           };
         
           modelViewer.addEventListener("click", changeColor);
-        });
-
-        testViewer.addEventListener("load", () => {
-          const changeColor = (event) => {
-            const material = testViewer.materialFromPoint(event.clientX, event.clientY);
-            
-            if (material != null) {
-                // const random = Math.floor(Math.random() * 3);
-                material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
-            }
-          };
-        
-          testViewer.addEventListener("click", changeColor);
         });
     </script>
 </body>
