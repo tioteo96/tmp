@@ -51,6 +51,7 @@
     <script type="module">
         const myhomeViewer = document.querySelector("model-viewer#myhome");
         const cup = document.querySelector("model-viewer#cup");
+        cup.scale = `${0.2} ${0.2} ${0.2}`;
         
         myhomeViewer.addEventListener("load", () => {
           const changeColor = (event) => {
