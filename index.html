@@ -29,39 +29,41 @@
 
 <body>
     <div class="box">
-        <model-viewer id="pickMaterial"
+        <model-viewer id="myhome"
             src="./assets/myhome.glb"
             alt="myhome"
             ar
             disable-tap
             camera-controls
             shadow-intensity="1">
-            <model-viewer
+            <model-viewer id="cup"
                 src="./assets/cup.glb"
                 alt="cup"
                 ar
                 disable-tap
                 camera-controls
-                shadow-intensity="0">
+                shadow-intensity="0"
+                style="visibility: hidden;">
             </model-viewer>
         </model-viewer>
     </div>
 
     <script type="module">
-        const modelViewer = document.querySelector("model-viewer#pickMaterial");
+        const myhomeViewer = document.querySelector("model-viewer#myhome");
+        const cup = document.querySelector("model-viewer#cup");
         
-        modelViewer.addEventListener("load", () => {
+        myhomeViewer.addEventListener("load", () => {
           const changeColor = (event) => {
-            const material = modelViewer.materialFromPoint(event.clientX, event.clientY);
+            const material = myhomeViewer.materialFromPoint(event.clientX, event.clientY);
             const random = Math.floor(Math.random() * 3);
             if (material != null) {
               material.pbrMetallicRoughness.
                 setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
-              console.log(material.index);
+              cup.style.visibility = "visible";
             }
           };
         
-          modelViewer.addEventListener("click", changeColor);
+          myhomeViewer.addEventListener("click", changeColor);
         });
     </script>
 </body>
