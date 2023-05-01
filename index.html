@@ -44,7 +44,27 @@
                 camera-controls
                 shadow-intensity="0"
                 scale="0.001 0.001 0.001"
-                style="visibility: visible;">
+                style="visibility: hidden;">
+            </model-viewer>
+            <model-viewer id="keyboard"
+                src="./assets/keyboard.glb"
+                alt="keyboard"
+                ar
+                disable-tap
+                camera-controls
+                shadow-intensity="0"
+                scale="0.001 0.001 0.001"
+                style="visibility: hidden;">
+            </model-viewer>
+            <model-viewer id="lamp"
+                src="./assets/lamp.glb"
+                alt="lamp"
+                ar
+                disable-tap
+                camera-controls
+                shadow-intensity="0"
+                scale="0.001 0.001 0.001"
+                style="visibility: hidden;">
             </model-viewer>
         </model-viewer>
     </div>
@@ -52,6 +72,12 @@
     <script type="module">
         const myhomeViewer = document.querySelector("model-viewer#myhome");
         const cup = document.querySelector("model-viewer#cup");
+        const keyboard = document.querySelector("model-viewer#keyboard");
+        const lamp = document.querySelector("model-viewer#lamp");
+        var map = [];
+        map.push(cup);
+        map.push(keyboard);
+        map.push(lamp);
         
         myhomeViewer.addEventListener("load", () => {
           const changeColor = (event) => {
@@ -60,7 +86,13 @@
             if (material != null) {
               material.pbrMetallicRoughness.
                 setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
-              cup.style.visibility = "hidden";
+              
+              var mappedObject = map[material.index];
+              if (mappedObject.style.visibility === "hidden") {
+                mappedObject.style.visibility = "visible";
+              } else {
+                mappedObject.style.visibility = "hidden";
+              }
               console.log(material.index);
             }
           };
