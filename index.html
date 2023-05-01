@@ -34,7 +34,6 @@
             alt="A 3D model of an astronaut"
             ar
             disable-tap
-            disable-zoom
             camera-controls
             shadow-intensity="1">
         </model-viewer>
@@ -49,6 +48,8 @@
             if (material != null) {
               material.pbrMetallicRoughness.
                 setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+              console.log(material.getAlphaMode());
+              console.log(material.getDoubleSided());
             }
           };
         
