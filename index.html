@@ -47,10 +47,9 @@
             const material = modelViewer.materialFromPoint(event.clientX, event.clientY);
             const random = Math.floor(Math.random() * 3);
             if (material != null) {
-              material.setDoubleSided(false);
-            //   material.pbrMetallicRoughness.
-            //     setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
-              console.log(material.getDoubleSided());
+              material.pbrMetallicRoughness.
+                setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
+              console.log(material.name);
             }
           };
         
