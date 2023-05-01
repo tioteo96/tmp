@@ -5,9 +5,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer-effects/dist/model-viewer-effects.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@^0.150.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src=" https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer-no-three.min.js "></script>
+  <script type="module" src=" https://cdn.jsdelivr.net/npm/@google/model-viewer-effects/dist/model-viewer-effects.min.js "></script>
   <title>undefined</title>
 
   <style>
@@ -47,8 +53,8 @@
                 <bloom-effect blend-mode="skip"></bloom-effect>
                 <pixelate-effect granularity="5" blend-mode="skip"></pixelate-effect>
                 <color-grade-effect blend-mode="skip"></color-grade-effect>
-              </effect-composer>
-              <div class="controls">
+            </effect-composer>
+            <div class="controls">
                 <label for="outline">Outline Effect</label>
                 <input type="checkbox" id="outline">
                 <label for="ssao">SSAO Effect</label>
@@ -63,7 +69,7 @@
                 <input type="checkbox" id="pixelate">
                 <label for="colorgrade">Color Grade Effect</label>
                 <input type="checkbox" id="colorgrade">
-              </div>
+            </div>
         </model-viewer>
 
         <!-- <model-viewer 
