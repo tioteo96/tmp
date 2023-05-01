@@ -43,8 +43,8 @@
                 disable-tap
                 camera-controls
                 shadow-intensity="0"
-                scale="0.01 0.01 0.01"
-                style="visibility: hidden;">
+                scale="0.001 0.001 0.001"
+                style="visibility: visible;">
             </model-viewer>
         </model-viewer>
     </div>
@@ -60,7 +60,7 @@
             if (material != null) {
               material.pbrMetallicRoughness.
                 setBaseColorFactor([Math.random(), Math.random(), Math.random()]);
-              cup.style.visibility = "visible";
+              cup.style.visibility = "hidden";
               console.log(material.index);
             }
           };
