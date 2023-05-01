@@ -26,10 +26,6 @@
         width: 100%;
         height: 100%;
     }
-    .child {
-        width: 10%;
-        height: 10%;
-    }
   </style>
 </head>
 
@@ -44,46 +40,46 @@
             disable-zoom
             camera-controls
             shadow-intensity="1">
-        </model-viewer>
-        <model-viewer id="cup"
-            class="child"
-            src="./assets/cup.glb"
-            alt="cup"
-            ar
-            disable-tap
-            camera-controls
-            shadow-intensity="0"
-            style="visibility: visible;">
-        </model-viewer>
-        <model-viewer id="keyboard"
-            class="child"
-            src="./assets/keyboard.glb"
-            alt="keyboard"
-            ar
-            disable-tap
-            camera-controls
-            shadow-intensity="0"
-            style="visibility: visible;">
-        </model-viewer>
-        <model-viewer id="lamp"
-            class="child"
-            src="./assets/lamp.glb"
-            alt="lamp"
-            ar
-            disable-tap
-            camera-controls
-            shadow-intensity="0"
-            style="visibility: visible;">
-        </model-viewer>
+            <model-viewer id="cup"
+                class="child"
+                src="./assets/cup.glb"
+                alt="cup"
+                ar
+                disable-tap
+                camera-controls
+                shadow-intensity="0"
+                style="visibility: visible;">
+                <model-viewer id="keyboard"
+                    class="child"
+                    src="./assets/keyboard.glb"
+                    alt="keyboard"
+                    ar
+                    disable-tap
+                    camera-controls
+                    shadow-intensity="0"
+                    style="visibility: visible;">
+                    <model-viewer id="lamp"
+                        class="child"
+                        src="./assets/lamp.glb"
+                        alt="lamp"
+                        ar
+                        disable-tap
+                        camera-controls
+                        shadow-intensity="0"
+                        style="visibility: visible;">
+                    </model-viewer>
+                </model-viewer>
+            </model-viewer>
+        </model-viewer> 
     </div>
 
     <script type="module">
         const myhomeViewer = document.querySelector("model-viewer#myhome");
-        // const cup = document.querySelector("model-viewer#cup");
+        const cup = document.querySelector("model-viewer#cup");
         const keyboard = document.querySelector("model-viewer#keyboard");
         const lamp = document.querySelector("model-viewer#lamp");
         var map = [];
-        // map.push(cup);
+        map.push(cup);
         map.push(keyboard);
         map.push(lamp);
         
