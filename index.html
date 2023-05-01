@@ -36,7 +36,7 @@
             disable-tap
             camera-controls
             shadow-intensity="1">
-            <model-viewer id="cup"
+            <!-- <model-viewer id="cup"
                 src="./assets/cup.glb"
                 alt="cup"
                 ar
@@ -45,7 +45,7 @@
                 shadow-intensity="0"
                 scale="0.001 0.001 0.001"
                 style="visibility: visible;">
-            </model-viewer>
+            </model-viewer> -->
             <model-viewer id="keyboard"
                 src="./assets/keyboard.glb"
                 alt="keyboard"
@@ -69,11 +69,11 @@
 
     <script type="module">
         const myhomeViewer = document.querySelector("model-viewer#myhome");
-        const cup = document.querySelector("model-viewer#cup");
+        // const cup = document.querySelector("model-viewer#cup");
         const keyboard = document.querySelector("model-viewer#keyboard");
         const lamp = document.querySelector("model-viewer#lamp");
         var map = [];
-        map.push(cup);
+        // map.push(cup);
         map.push(keyboard);
         map.push(lamp);
         
